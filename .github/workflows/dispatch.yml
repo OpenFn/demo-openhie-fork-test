@@ -3,6 +3,8 @@ on: [repository_dispatch]
 jobs:
   pull_job:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     name: A job to pull changes from Lightning
     steps:
       - name: Attempt Release 1
