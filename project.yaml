@@ -13,7 +13,10 @@ workflows:
         # credential:
         # globals:
         body: |
-          fn(state => state);
+          fn(state => {
+            console.log("hello github integration")
+            return state
+        });
           
       Send-to-OpenHIM-to-route-to-SHR:
         name: Send-to-OpenHIM-to-route-to-SHR
