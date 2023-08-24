@@ -1,7 +1,4 @@
-on: 
-  repository_dispatch:
-    types: [sync_project]
-  
+on: [repository_dispatch]
 
 jobs:
   pull_job:
