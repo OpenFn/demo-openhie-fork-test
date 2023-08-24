@@ -31,7 +31,11 @@
         },
         "FHIR-standard-Data": {
           "id": "55016dda-42e3-4ee1-8a9c-24e3f23d42f1",
-          "name": "FHIR-standard-Data",
+          "delete": true
+        },
+        "FHIR-standard-Data-with-change": {
+          "id": "28dd0846-a6ae-40c0-8ab4-3e0a6b487afe",
+          "name": "FHIR-standard-Data-with-change",
           "adaptor": "@openfn/language-http@latest",
           "body": "fn(state => state);\n",
           "enabled": true
@@ -68,15 +72,23 @@
         },
         "webhook->FHIR-standard-Data": {
           "id": "5ce3a8ed-b9eb-464a-a2cd-ba55adc393c2",
-          "condition": "always",
-          "source_job_id": null,
-          "source_trigger_id": "530cde0b-0de4-4f68-8834-0a4356a2fe53",
-          "target_job_id": "55016dda-42e3-4ee1-8a9c-24e3f23d42f1"
+          "delete": true
         },
         "FHIR-standard-Data->Send-to-OpenHIM-to-route-to-SHR": {
           "id": "5f459cd9-2882-4a61-a2cc-ec45e58d4837",
+          "delete": true
+        },
+        "webhook->FHIR-standard-Data-with-change": {
+          "id": "75e7f7d8-274b-410d-9600-730bbd535229",
+          "condition": "always",
+          "source_job_id": null,
+          "source_trigger_id": "530cde0b-0de4-4f68-8834-0a4356a2fe53",
+          "target_job_id": "28dd0846-a6ae-40c0-8ab4-3e0a6b487afe"
+        },
+        "FHIR-standard-Data-with-change->Send-to-OpenHIM-to-route-to-SHR": {
+          "id": "1e5ba385-2c49-4241-8cd2-042c99a810ec",
           "condition": "on_job_success",
-          "source_job_id": "55016dda-42e3-4ee1-8a9c-24e3f23d42f1",
+          "source_job_id": "28dd0846-a6ae-40c0-8ab4-3e0a6b487afe",
           "source_trigger_id": null,
           "target_job_id": "977b87ff-f347-42b5-832f-6ae2ca726f32"
         }

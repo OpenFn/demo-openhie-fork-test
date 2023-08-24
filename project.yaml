@@ -6,6 +6,15 @@ workflows:
   OpenHIE-Workflow:
     name: OpenHIE Workflow
     jobs:
+      FHIR-standard-Data-with-change:
+        name: FHIR-standard-Data-with-change
+        adaptor: '@openfn/language-http@latest'
+        enabled: true
+        # credential:
+        # globals:
+        body: |
+          fn(state => state);
+          
       Send-to-OpenHIM-to-route-to-SHR:
         name: Send-to-OpenHIM-to-route-to-SHR
         adaptor: '@openfn/language-http@latest'
@@ -33,25 +42,16 @@ workflows:
         body: |
           fn(state => state);
           
-      FHIR-standard-Data:
-        name: FHIR-standard-Data
-        adaptor: '@openfn/language-http@latest'
-        enabled: true
-        # credential:
-        # globals:
-        body: |
-          fn(state => state);
-          
     triggers:
       webhook:
         type: webhook
     edges:
-      webhook->FHIR-standard-Data:
+      webhook->FHIR-standard-Data-with-change:
         source_trigger: webhook
-        target_job: FHIR-standard-Data
+        target_job: FHIR-standard-Data-with-change
         condition: always
-      FHIR-standard-Data->Send-to-OpenHIM-to-route-to-SHR:
-        source_job: FHIR-standard-Data
+      FHIR-standard-Data-with-change->Send-to-OpenHIM-to-route-to-SHR:
+        source_job: FHIR-standard-Data-with-change
         target_job: Send-to-OpenHIM-to-route-to-SHR
         condition: on_job_success
       Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful:
