@@ -8,7 +8,7 @@ jobs:
     name: A job to pull changes from Lightning
     steps:
       - name: Attempt Release 1
-        uses: zacck/test-pull-action@v0.0.3
+        uses: zacck/test-pull-action@0.0.3
         with: 
           secret_input: ${{ secrets.OPENFN_API_KEY }}
           project_id_input: ${{ secrets.OPENFN_PROJECT_ID }}
