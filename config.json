@@ -1,3 +1,5 @@
 {
-  "endpoint": "https://demo.openfn.org"
+  "endpoint": "https://demo.openfn.org",
+  "statePath": "./state.json",
+  "specPath": "./project.yaml"
 }
