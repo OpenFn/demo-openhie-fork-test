@@ -1,0 +1,14 @@
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to deploy to Lightning
+    steps:
+      - name: Attempt Release 1
+        uses: zacck/test-action@v0.1.9 
+        with: 
+          secret_input: ${{ secrets.OPENFN_API_KEY }}
