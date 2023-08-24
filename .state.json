@@ -6,10 +6,7 @@
       "jobs": {
         "Transform-data-to-FHIR-standard": {
           "id": "e44f65bb-5038-4e17-8d93-b63cbe95254a",
-          "name": "Transform-data-to-FHIR-standard",
-          "adaptor": "@openfn/language-http@latest",
-          "body": "fn(state => state);\n",
-          "enabled": true
+          "delete": true
         },
         "Send-to-OpenHIM-to-route-to-SHR": {
           "id": "977b87ff-f347-42b5-832f-6ae2ca726f32",
@@ -31,6 +28,13 @@
           "adaptor": "@openfn/language-http@latest",
           "body": "fn(state => state);\n",
           "enabled": true
+        },
+        "FHIR-standard-Data": {
+          "id": "55016dda-42e3-4ee1-8a9c-24e3f23d42f1",
+          "name": "FHIR-standard-Data",
+          "adaptor": "@openfn/language-http@latest",
+          "body": "fn(state => state);\n",
+          "enabled": true
         }
       },
       "triggers": {
@@ -42,17 +46,11 @@
       "edges": {
         "webhook->Transform-data-to-FHIR-standard": {
           "id": "b2c7407b-0ae9-4ca5-9d6b-ee624976fa54",
-          "condition": "always",
-          "source_job_id": null,
-          "source_trigger_id": "530cde0b-0de4-4f68-8834-0a4356a2fe53",
-          "target_job_id": "e44f65bb-5038-4e17-8d93-b63cbe95254a"
+          "delete": true
         },
         "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR": {
           "id": "d22ed6f4-26a2-4c85-b261-cc110a6851e6",
-          "condition": "on_job_success",
-          "source_job_id": "e44f65bb-5038-4e17-8d93-b63cbe95254a",
-          "source_trigger_id": null,
-          "target_job_id": "977b87ff-f347-42b5-832f-6ae2ca726f32"
+          "delete": true
         },
         "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful": {
           "id": "26c12f7f-7806-4008-87cd-6747998f95f4",
@@ -67,6 +65,20 @@
           "source_job_id": "977b87ff-f347-42b5-832f-6ae2ca726f32",
           "source_trigger_id": null,
           "target_job_id": "be85df30-0abd-4f8e-be17-501f67e18b8d"
+        },
+        "webhook->FHIR-standard-Data": {
+          "id": "5ce3a8ed-b9eb-464a-a2cd-ba55adc393c2",
+          "condition": "always",
+          "source_job_id": null,
+          "source_trigger_id": "530cde0b-0de4-4f68-8834-0a4356a2fe53",
+          "target_job_id": "55016dda-42e3-4ee1-8a9c-24e3f23d42f1"
+        },
+        "FHIR-standard-Data->Send-to-OpenHIM-to-route-to-SHR": {
+          "id": "5f459cd9-2882-4a61-a2cc-ec45e58d4837",
+          "condition": "on_job_success",
+          "source_job_id": "55016dda-42e3-4ee1-8a9c-24e3f23d42f1",
+          "source_trigger_id": null,
+          "target_job_id": "977b87ff-f347-42b5-832f-6ae2ca726f32"
         }
       }
     }
