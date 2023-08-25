@@ -7,7 +7,7 @@ workflows:
     name: OpenHIE Workflow
     jobs:
       Send-to-OpenHIM-to-route-to-Taylor:
-        name: Send to OpenHIM to route to Taylor
+        name: try renaming a job
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
