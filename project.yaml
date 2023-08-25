@@ -15,6 +15,15 @@ workflows:
         body: |
           fn(state => state);
           
+      Notify-CHW-taylor-failed:
+        name: Notify CHW taylor failed
+        adaptor: '@openfn/language-http@latest'
+        enabled: true
+        # credential:
+        # globals:
+        body: |
+          fn(state => state);
+          
       Transform-data-to-FHIR-standard:
         name: Transform data to FHIR standard
         adaptor: '@openfn/language-http@latest'
@@ -26,15 +35,6 @@ workflows:
           
       Notify-CHW-upload-successful:
         name: Notify CHW upload successful
-        adaptor: '@openfn/language-http@latest'
-        enabled: true
-        # credential:
-        # globals:
-        body: |
-          fn(state => state);
-          
-      Notify-CHW-upload-failed:
-        name: Notify CHW upload failed
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -58,7 +58,7 @@ workflows:
         source_job: Send-to-OpenHIM-to-route-to-Taylor
         target_job: Notify-CHW-upload-successful
         condition: on_job_success
-      Send-to-OpenHIM-to-route-to-Taylor->Notify-CHW-upload-failed:
+      Send-to-OpenHIM-to-route-to-Taylor->Notify-CHW-taylor-failed:
         source_job: Send-to-OpenHIM-to-route-to-Taylor
-        target_job: Notify-CHW-upload-failed
+        target_job: Notify-CHW-taylor-failed
         condition: on_job_failure
