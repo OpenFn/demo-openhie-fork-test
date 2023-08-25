@@ -6,20 +6,17 @@ workflows:
   OpenHIE-Workflow:
     name: OpenHIE Workflow
     jobs:
-      FHIR-standard-Data-with-change:
-        name: FHIR-standard-Data-with-change
+      Transform-data-to-FHIR-standard:
+        name: Transform data to FHIR standard
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
         # globals:
         body: |
-          fn(state => {
-            console.log("hello github integration")
-            return state
-        });
+          fn(state => state);
           
       Send-to-OpenHIM-to-route-to-SHR:
-        name: Send-to-OpenHIM-to-route-to-SHR
+        name: Send to OpenHIM to route to SHR
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -28,7 +25,7 @@ workflows:
           fn(state => state);
           
       Notify-CHW-upload-successful:
-        name: Notify-CHW-upload-successful
+        name: Notify CHW upload successful
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -37,7 +34,7 @@ workflows:
           fn(state => state);
           
       Notify-CHW-upload-failed:
-        name: Notify-CHW-upload-failed
+        name: Notify CHW upload failed
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -49,12 +46,12 @@ workflows:
       webhook:
         type: webhook
     edges:
-      webhook->FHIR-standard-Data-with-change:
+      webhook->Transform-data-to-FHIR-standard:
         source_trigger: webhook
-        target_job: FHIR-standard-Data-with-change
+        target_job: Transform-data-to-FHIR-standard
         condition: always
-      FHIR-standard-Data-with-change->Send-to-OpenHIM-to-route-to-SHR:
-        source_job: FHIR-standard-Data-with-change
+      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR:
+        source_job: Transform-data-to-FHIR-standard
         target_job: Send-to-OpenHIM-to-route-to-SHR
         condition: on_job_success
       Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful:
