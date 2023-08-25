@@ -1,13 +1,13 @@
 name: openhie-project
-# description:
+description: added description
 # credentials:
 # globals:
 workflows:
   OpenHIE-Workflow:
     name: OpenHIE Workflow
     jobs:
-      Send-to-OpenHIM-to-route-to-Tay:
-        name: Send to OpenHIM to route to Tay
+      Send-to-OpenHIM-to-route-to-Taylor:
+        name: Send to OpenHIM to route to Taylor
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -50,15 +50,15 @@ workflows:
         source_trigger: webhook
         target_job: Transform-data-to-FHIR-standard
         condition: always
-      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-Tay:
+      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-Taylor:
         source_job: Transform-data-to-FHIR-standard
-        target_job: Send-to-OpenHIM-to-route-to-Tay
+        target_job: Send-to-OpenHIM-to-route-to-Taylor
         condition: on_job_success
-      Send-to-OpenHIM-to-route-to-Tay->Notify-CHW-upload-successful:
-        source_job: Send-to-OpenHIM-to-route-to-Tay
+      Send-to-OpenHIM-to-route-to-Taylor->Notify-CHW-upload-successful:
+        source_job: Send-to-OpenHIM-to-route-to-Taylor
         target_job: Notify-CHW-upload-successful
         condition: on_job_success
-      Send-to-OpenHIM-to-route-to-Tay->Notify-CHW-upload-failed:
-        source_job: Send-to-OpenHIM-to-route-to-Tay
+      Send-to-OpenHIM-to-route-to-Taylor->Notify-CHW-upload-failed:
+        source_job: Send-to-OpenHIM-to-route-to-Taylor
         target_job: Notify-CHW-upload-failed
         condition: on_job_failure

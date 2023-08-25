@@ -1,9 +1,9 @@
 {
   "id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
   "name": "openhie-project",
-  "description": null,
+  "description": "added description",
   "inserted_at": "2023-08-25T12:15:54",
-  "updated_at": "2023-08-25T12:15:54",
+  "updated_at": "2023-08-25T12:34:58",
   "scheduled_deletion": null,
   "requires_mfa": false,
   "workflows": {
@@ -11,7 +11,7 @@
       "id": "5896f524-b198-4867-a22b-342c82d18222",
       "name": "OpenHIE Workflow",
       "inserted_at": "2023-08-25T12:15:54",
-      "updated_at": "2023-08-25T12:32:39",
+      "updated_at": "2023-08-25T12:35:14",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "triggers": {
@@ -21,10 +21,10 @@
         }
       },
       "jobs": {
-        "Send-to-OpenHIM-to-route-to-Tay": {
+        "Send-to-OpenHIM-to-route-to-Taylor": {
           "enabled": true,
           "id": "69ae3131-88af-45c5-ab29-81bd98541981",
-          "name": "Send to OpenHIM to route to Tay",
+          "name": "Send to OpenHIM to route to Taylor",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
         },
@@ -57,19 +57,19 @@
           "source_trigger_id": "86bd4aec-7340-4717-be11-9813a677fe68",
           "target_job_id": "bce0fbd6-a626-4996-9a80-715fbb21203d"
         },
-        "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-Tay": {
+        "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-Taylor": {
           "id": "a0f8990f-a508-4fc9-991c-c6861f6a24f4",
           "source_job_id": "bce0fbd6-a626-4996-9a80-715fbb21203d",
           "condition": "on_job_success",
           "target_job_id": "69ae3131-88af-45c5-ab29-81bd98541981"
         },
-        "Send-to-OpenHIM-to-route-to-Tay->Notify-CHW-upload-successful": {
+        "Send-to-OpenHIM-to-route-to-Taylor->Notify-CHW-upload-successful": {
           "id": "e6fac0b5-b534-4ebe-9d81-e35da3019d56",
           "source_job_id": "69ae3131-88af-45c5-ab29-81bd98541981",
           "condition": "on_job_success",
           "target_job_id": "bc43a861-b95a-4283-8049-5a8fe4ddf655"
         },
-        "Send-to-OpenHIM-to-route-to-Tay->Notify-CHW-upload-failed": {
+        "Send-to-OpenHIM-to-route-to-Taylor->Notify-CHW-upload-failed": {
           "id": "b4d5d762-8413-4291-8823-da9538c538b0",
           "source_job_id": "69ae3131-88af-45c5-ab29-81bd98541981",
           "condition": "on_job_failure",
