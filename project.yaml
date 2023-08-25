@@ -6,8 +6,8 @@ workflows:
   OpenHIE-Workflow:
     name: OpenHIE Workflow
     jobs:
-      Send-to-OpenHIM-to-route-to-Taylor:
-        name: try renaming a job
+      Notify-CHW-taylor-failed:
+        name: Notify CHW taylor failed
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -15,8 +15,8 @@ workflows:
         body: |
           fn(state => state);
           
-      Notify-CHW-taylor-failed:
-        name: Notify CHW taylor failed
+      renaming-from-the-server:
+        name: renaming from the server
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -50,15 +50,15 @@ workflows:
         source_trigger: webhook
         target_job: Transform-data-to-FHIR-standard
         condition: always
-      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-Taylor:
+      Transform-data-to-FHIR-standard->renaming-from-the-server:
         source_job: Transform-data-to-FHIR-standard
-        target_job: Send-to-OpenHIM-to-route-to-Taylor
+        target_job: renaming-from-the-server
         condition: on_job_success
-      Send-to-OpenHIM-to-route-to-Taylor->Notify-CHW-upload-successful:
-        source_job: Send-to-OpenHIM-to-route-to-Taylor
+      renaming-from-the-server->Notify-CHW-upload-successful:
+        source_job: renaming-from-the-server
         target_job: Notify-CHW-upload-successful
         condition: on_job_success
-      Send-to-OpenHIM-to-route-to-Taylor->Notify-CHW-taylor-failed:
-        source_job: Send-to-OpenHIM-to-route-to-Taylor
+      renaming-from-the-server->Notify-CHW-taylor-failed:
+        source_job: renaming-from-the-server
         target_job: Notify-CHW-taylor-failed
         condition: on_job_failure
