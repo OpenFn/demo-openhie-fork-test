@@ -33,7 +33,7 @@ workflows:
         body: |
           fn(state => {
             console.log("hello world")
-            console.log("adding something from github...")
+            console.log("changing something from openfn...")
             return state;
           });
           
