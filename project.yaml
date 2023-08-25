@@ -6,8 +6,8 @@ workflows:
   OpenHIE-Workflow:
     name: OpenHIE Workflow
     jobs:
-      Transform-data-to-FHIR-standard:
-        name: Transform data to FHIR standard
+      Send-to-OpenHIM-to-route-to-Tay:
+        name: Send to OpenHIM to route to Tay
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -15,8 +15,8 @@ workflows:
         body: |
           fn(state => state);
           
-      Send-to-OpenHIM-to-route-to-SHR:
-        name: Send to OpenHIM to route to SHR
+      Transform-data-to-FHIR-standard:
+        name: Transform data to FHIR standard
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -50,15 +50,15 @@ workflows:
         source_trigger: webhook
         target_job: Transform-data-to-FHIR-standard
         condition: always
-      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR:
+      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-Tay:
         source_job: Transform-data-to-FHIR-standard
-        target_job: Send-to-OpenHIM-to-route-to-SHR
+        target_job: Send-to-OpenHIM-to-route-to-Tay
         condition: on_job_success
-      Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful:
-        source_job: Send-to-OpenHIM-to-route-to-SHR
+      Send-to-OpenHIM-to-route-to-Tay->Notify-CHW-upload-successful:
+        source_job: Send-to-OpenHIM-to-route-to-Tay
         target_job: Notify-CHW-upload-successful
         condition: on_job_success
-      Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed:
-        source_job: Send-to-OpenHIM-to-route-to-SHR
+      Send-to-OpenHIM-to-route-to-Tay->Notify-CHW-upload-failed:
+        source_job: Send-to-OpenHIM-to-route-to-Tay
         target_job: Notify-CHW-upload-failed
         condition: on_job_failure
