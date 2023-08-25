@@ -7,7 +7,7 @@ workflows:
     name: OpenHIE Workflow
     jobs:
       Notify-CHW-taylor-failed:
-        name: Notify CHW taylor failed
+        name: Notify CHW testing
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
