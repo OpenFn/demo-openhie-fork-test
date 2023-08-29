@@ -3,8 +3,6 @@ on: [repository_dispatch]
 jobs:
   pull-from-lightning:
     runs-on: ubuntu-latest
-    env:
-      MESSAGE: ${{ github.event.client_payload.message }}
     permissions:
       contents: write
     name: A job to pull changes from Lightning
@@ -14,4 +12,4 @@ jobs:
         with: 
           secret_input: ${{ secrets.OPENFN_API_KEY }}
           project_id_input: ${{ secrets.OPENFN_PROJECT_ID }}
-          commit_message_input: $MESSAGE
+          commit_message_input: "user ${{ github.event.client_payload.message }}"
