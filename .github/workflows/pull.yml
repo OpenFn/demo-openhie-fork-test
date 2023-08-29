@@ -3,12 +3,12 @@ on: [repository_dispatch]
 jobs:
   pull-from-lightning:
     runs-on: ubuntu-latest
+    env:
+      MESSAGE: ${{ github.event.client_payload.message }}
     permissions:
       contents: write
     name: A job to pull changes from Lightning
     steps:
-      - env:
-          MESSAGE: ${{ github.event.client_payload.message }}
       - name: openfn pull and commit
         uses: OpenFn/cli-pull-action@v0.6.0
         with: 
