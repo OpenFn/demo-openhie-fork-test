@@ -13,7 +13,10 @@ workflows:
         # credential:
         # globals:
         body: |
-          fn(state => state);
+          fn(state => {
+            console.log("hello there");
+            return state
+          });
           
       Notify-CHW-upload-failed:
         name: Notify CHW upload failed
