@@ -11,7 +11,7 @@
       "id": "19ffc0f4-73c1-439f-9509-0bd2b5131b87",
       "name": "OpenHIE Workflow",
       "inserted_at": "2023-08-29T13:57:10",
-      "updated_at": "2023-08-29T16:31:00",
+      "updated_at": "2023-08-29T16:38:14",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "triggers": {
@@ -21,13 +21,6 @@
         }
       },
       "jobs": {
-        "Send-to-OpenHIM-to-route-to-SHR": {
-          "enabled": true,
-          "id": "b2bec1e5-4f3e-4222-8fd1-a0e0a8f8d486",
-          "name": "Send to OpenHIM to route to SHR",
-          "body": "fn(state => state);\n",
-          "adaptor": "@openfn/language-http@latest"
-        },
         "Notify-CHW-upload-successful": {
           "enabled": true,
           "id": "0ce03371-0714-4587-bb00-3f46fe3e39e3",
@@ -48,6 +41,13 @@
           "name": "Transform data to FHIR standards",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
+        },
+        "Send-to-OpenHIM-to-route-to-SHRs": {
+          "enabled": true,
+          "id": "b2bec1e5-4f3e-4222-8fd1-a0e0a8f8d486",
+          "name": "Send to OpenHIM to route to SHRs",
+          "body": "fn(state => state);\n",
+          "adaptor": "@openfn/language-http@latest"
         }
       },
       "edges": {
@@ -57,19 +57,19 @@
           "source_trigger_id": "169389ad-d84a-45ee-96dc-286c5ad8f1a6",
           "target_job_id": "5d11aeeb-950e-4a3e-88af-8559f9d17b9c"
         },
-        "Transform-data-to-FHIR-standards->Send-to-OpenHIM-to-route-to-SHR": {
+        "Transform-data-to-FHIR-standards->Send-to-OpenHIM-to-route-to-SHRs": {
           "id": "b2d16736-4b21-494e-938d-e98660a5dd0d",
           "source_job_id": "5d11aeeb-950e-4a3e-88af-8559f9d17b9c",
           "condition": "on_job_success",
           "target_job_id": "b2bec1e5-4f3e-4222-8fd1-a0e0a8f8d486"
         },
-        "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful": {
+        "Send-to-OpenHIM-to-route-to-SHRs->Notify-CHW-upload-successful": {
           "id": "fe204e8e-0f38-44be-a75a-04ad31a91812",
           "source_job_id": "b2bec1e5-4f3e-4222-8fd1-a0e0a8f8d486",
           "condition": "on_job_success",
           "target_job_id": "0ce03371-0714-4587-bb00-3f46fe3e39e3"
         },
-        "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed": {
+        "Send-to-OpenHIM-to-route-to-SHRs->Notify-CHW-upload-failed": {
           "id": "24b94c8a-c55a-419b-907c-0addb16b308c",
           "source_job_id": "b2bec1e5-4f3e-4222-8fd1-a0e0a8f8d486",
           "condition": "on_job_failure",
