@@ -1,9 +1,9 @@
 {
   "id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
   "name": "openhie-project",
-  "description": null,
+  "description": "a description change only",
   "inserted_at": "2023-08-30T15:27:16",
-  "updated_at": "2023-08-30T15:31:40",
+  "updated_at": "2023-08-30T15:45:37",
   "scheduled_deletion": null,
   "requires_mfa": false,
   "workflows": {
@@ -14,30 +14,10 @@
       "updated_at": "2023-08-30T15:31:40",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
-      "edges": {
-        "webhook->Transform-data-to-FHIR-standard": {
-          "id": "8aaa585b-c352-47d6-82dc-d6523b59bf46",
-          "condition": "always",
-          "source_trigger_id": "20452a49-d40c-4988-869e-d52806883193",
-          "target_job_id": "e77bad58-2bfe-4bbf-b11c-b704c093d707"
-        },
-        "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR": {
-          "id": "2eee0093-d5e6-47c9-8182-993f1d2905c0",
-          "source_job_id": "e77bad58-2bfe-4bbf-b11c-b704c093d707",
-          "condition": "on_job_success",
-          "target_job_id": "1d0892cc-a73a-4c9d-8f68-13574f13d4d6"
-        },
-        "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful": {
-          "id": "917255f3-6c1b-4003-8658-7739ba2696d0",
-          "source_job_id": "1d0892cc-a73a-4c9d-8f68-13574f13d4d6",
-          "condition": "on_job_success",
-          "target_job_id": "1a1f7292-aee5-4270-8390-fa05620581cd"
-        },
-        "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed": {
-          "id": "28ae1b3c-be19-4310-aba2-91712f4a3d0c",
-          "source_job_id": "1d0892cc-a73a-4c9d-8f68-13574f13d4d6",
-          "condition": "on_job_failure",
-          "target_job_id": "c61b3b95-ccdc-4115-aa16-3dccb35dd199"
+      "triggers": {
+        "webhook": {
+          "id": "20452a49-d40c-4988-869e-d52806883193",
+          "type": "webhook"
         }
       },
       "jobs": {
@@ -70,10 +50,30 @@
           "adaptor": "@openfn/language-http@latest"
         }
       },
-      "triggers": {
-        "webhook": {
-          "id": "20452a49-d40c-4988-869e-d52806883193",
-          "type": "webhook"
+      "edges": {
+        "webhook->Transform-data-to-FHIR-standard": {
+          "id": "8aaa585b-c352-47d6-82dc-d6523b59bf46",
+          "condition": "always",
+          "source_trigger_id": "20452a49-d40c-4988-869e-d52806883193",
+          "target_job_id": "e77bad58-2bfe-4bbf-b11c-b704c093d707"
+        },
+        "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR": {
+          "id": "2eee0093-d5e6-47c9-8182-993f1d2905c0",
+          "source_job_id": "e77bad58-2bfe-4bbf-b11c-b704c093d707",
+          "condition": "on_job_success",
+          "target_job_id": "1d0892cc-a73a-4c9d-8f68-13574f13d4d6"
+        },
+        "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful": {
+          "id": "917255f3-6c1b-4003-8658-7739ba2696d0",
+          "source_job_id": "1d0892cc-a73a-4c9d-8f68-13574f13d4d6",
+          "condition": "on_job_success",
+          "target_job_id": "1a1f7292-aee5-4270-8390-fa05620581cd"
+        },
+        "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed": {
+          "id": "28ae1b3c-be19-4310-aba2-91712f4a3d0c",
+          "source_job_id": "1d0892cc-a73a-4c9d-8f68-13574f13d4d6",
+          "condition": "on_job_failure",
+          "target_job_id": "c61b3b95-ccdc-4115-aa16-3dccb35dd199"
         }
       }
     }
