@@ -43,7 +43,10 @@ workflows:
         # credential:
         # globals:
         body: |
-          fn(state => state);
+          fn(state => {
+            console.log("and from github to openfn");
+            return state;
+          });
           
     triggers:
       webhook:
