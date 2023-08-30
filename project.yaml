@@ -22,7 +22,10 @@ workflows:
         # credential:
         # globals:
         body: |
-          fn(state => state);
+          fn(state => {
+            console.log("from openfn to github");
+            return state
+          });
           
       Notify-CHW-upload-successful:
         name: Notify CHW upload successful

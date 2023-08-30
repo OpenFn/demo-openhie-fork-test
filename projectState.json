@@ -11,7 +11,7 @@
       "id": "17e6acc9-3298-4541-92ae-3853857780eb",
       "name": "OpenHIE Workflow",
       "inserted_at": "2023-08-30T15:27:16",
-      "updated_at": "2023-08-30T15:27:16",
+      "updated_at": "2023-08-30T15:29:43",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "triggers": {
@@ -32,7 +32,7 @@
           "enabled": true,
           "id": "1d0892cc-a73a-4c9d-8f68-13574f13d4d6",
           "name": "Send to OpenHIM to route to SHR",
-          "body": "fn(state => state);\n",
+          "body": "fn(state => {\n  console.log(\"from openfn to github\");\n  return state\n});\n",
           "adaptor": "@openfn/language-http@latest"
         },
         "Notify-CHW-upload-successful": {
