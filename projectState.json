@@ -11,7 +11,7 @@
       "id": "d8ca0a72-5252-4c1b-ae6e-dde964abedf4",
       "name": "OpenHIE Workflow",
       "inserted_at": "2023-08-31T10:57:28",
-      "updated_at": "2023-08-31T10:57:28",
+      "updated_at": "2023-08-31T13:03:31",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "triggers": {
@@ -21,10 +21,10 @@
         }
       },
       "jobs": {
-        "Transform-data-to-FHIR-standard": {
+        "Transform-data-to-FHIR-standard-again": {
           "enabled": true,
           "id": "5e1e41ba-a9a0-4c7f-813f-fd32e38852c7",
-          "name": "Transform data to FHIR standard",
+          "name": "Transform data to FHIR standard again",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
         },
@@ -51,13 +51,13 @@
         }
       },
       "edges": {
-        "webhook->Transform-data-to-FHIR-standard": {
+        "webhook->Transform-data-to-FHIR-standard-again": {
           "id": "7d7e5bfd-63a5-4c3b-a623-235067e62743",
           "condition": "always",
           "source_trigger_id": "0a4e9d10-c76e-42d5-9127-0b053a2e355c",
           "target_job_id": "5e1e41ba-a9a0-4c7f-813f-fd32e38852c7"
         },
-        "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR": {
+        "Transform-data-to-FHIR-standard-again->Send-to-OpenHIM-to-route-to-SHR": {
           "id": "5d7ebedd-1ab1-490d-9a93-f1ea90ab7758",
           "source_job_id": "5e1e41ba-a9a0-4c7f-813f-fd32e38852c7",
           "condition": "on_job_success",
