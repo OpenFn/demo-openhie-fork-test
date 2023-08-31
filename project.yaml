@@ -1,5 +1,5 @@
 name: openhie-project
-description: a description change only
+# description:
 # credentials:
 # globals:
 workflows:
@@ -22,10 +22,7 @@ workflows:
         # credential:
         # globals:
         body: |
-          fn(state => {
-            console.log("from openfn to github");
-            return state
-          });
+          fn(state => state);
           
       Notify-CHW-upload-successful:
         name: Notify CHW upload successful
@@ -43,10 +40,7 @@ workflows:
         # credential:
         # globals:
         body: |
-          fn(state => {
-            console.log("and from github to openfn");
-            return state;
-          });
+          fn(state => state);
           
     triggers:
       webhook:
