@@ -3,11 +3,11 @@ name: openhie-project
 # credentials:
 # globals:
 workflows:
-  OpenHIE-Workflow-with-long-name:
-    name: OpenHIE Workflow with long name
+  OpenHIE-Workflow:
+    name: OpenHIE Workflow
     jobs:
-      Transform-data-to-FHIR-standard:
-        name: Transform data to FHIR standard
+      Transform-data-to-FHIR-standard-nick:
+        name: Transform data to FHIR standard nick
         adaptor: '@openfn/language-http@latest'
         enabled: true
         # credential:
@@ -46,12 +46,12 @@ workflows:
       webhook:
         type: webhook
     edges:
-      webhook->Transform-data-to-FHIR-standard:
+      webhook->Transform-data-to-FHIR-standard-nick:
         source_trigger: webhook
-        target_job: Transform-data-to-FHIR-standard
+        target_job: Transform-data-to-FHIR-standard-nick
         condition: always
-      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR:
-        source_job: Transform-data-to-FHIR-standard
+      Transform-data-to-FHIR-standard-nick->Send-to-OpenHIM-to-route-to-SHR:
+        source_job: Transform-data-to-FHIR-standard-nick
         target_job: Send-to-OpenHIM-to-route-to-SHR
         condition: on_job_success
       Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful:
