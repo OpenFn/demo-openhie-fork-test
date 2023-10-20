@@ -2,78 +2,78 @@
   "id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
   "name": "openhie-project",
   "description": null,
-  "inserted_at": "2023-09-29T00:00:20",
-  "updated_at": "2023-09-29T00:00:20",
+  "inserted_at": "2023-10-20T00:00:22",
+  "updated_at": "2023-10-20T00:00:22",
   "scheduled_deletion": null,
   "requires_mfa": false,
   "workflows": {
     "OpenHIE-Workflow": {
-      "id": "e93b93d8-6134-4dd1-bc9e-130b8f4a8c7d",
+      "id": "710a67aa-44da-4d3d-86ca-122be7cd5c76",
       "name": "OpenHIE Workflow",
-      "inserted_at": "2023-09-29T00:00:20",
-      "updated_at": "2023-09-29T10:05:45",
+      "inserted_at": "2023-10-20T00:00:22",
+      "updated_at": "2023-10-20T00:00:22",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "triggers": {
         "webhook": {
-          "id": "b9d14853-825d-4697-ad01-ddf4df3ad4b2",
+          "id": "cae544ab-03dc-4ccc-a09c-fb4edb255d7a",
           "type": "webhook"
         }
       },
       "jobs": {
-        "Transform-data-to-FHIR-standard-nick": {
+        "Transform-data-to-FHIR-standard": {
           "enabled": true,
-          "id": "1e32bc76-5a6a-49f7-8823-698ed6aefddd",
-          "name": "Transform data to FHIR standard nick",
+          "id": "94619c67-7749-4c22-a647-f10de9e6fa61",
+          "name": "Transform data to FHIR standard",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
         },
         "Send-to-OpenHIM-to-route-to-SHR": {
           "enabled": true,
-          "id": "4b25279a-20ac-4ed0-ac76-3c932f74092e",
+          "id": "f41f2e03-89a0-45fc-9a81-e3087b672afd",
           "name": "Send to OpenHIM to route to SHR",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
         },
         "Notify-CHW-upload-successful": {
           "enabled": true,
-          "id": "806402c8-9bb5-4de0-88de-fa79faac0417",
+          "id": "1fbdff3d-e916-47e9-9901-a9905479126e",
           "name": "Notify CHW upload successful",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
         },
         "Notify-CHW-upload-failed": {
           "enabled": true,
-          "id": "e9498f11-0ce0-464f-9c06-84099eb105a6",
+          "id": "e9ea55db-ce19-4259-8a95-2c8516bf513d",
           "name": "Notify CHW upload failed",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
         }
       },
       "edges": {
-        "webhook->Transform-data-to-FHIR-standard-nick": {
-          "id": "041c43f8-6ffa-48a1-a6ff-fbe5971d2521",
+        "webhook->Transform-data-to-FHIR-standard": {
+          "id": "ae58f2b1-ce9a-44a3-a10b-d7c64e143592",
           "condition": "always",
-          "source_trigger_id": "b9d14853-825d-4697-ad01-ddf4df3ad4b2",
-          "target_job_id": "1e32bc76-5a6a-49f7-8823-698ed6aefddd"
+          "source_trigger_id": "cae544ab-03dc-4ccc-a09c-fb4edb255d7a",
+          "target_job_id": "94619c67-7749-4c22-a647-f10de9e6fa61"
         },
-        "Transform-data-to-FHIR-standard-nick->Send-to-OpenHIM-to-route-to-SHR": {
-          "id": "8de69f67-b498-4846-8a6e-b8016e0d5fb6",
-          "source_job_id": "1e32bc76-5a6a-49f7-8823-698ed6aefddd",
+        "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR": {
+          "id": "f557a6a6-b45e-478b-ba5d-76baf33e95a0",
+          "source_job_id": "94619c67-7749-4c22-a647-f10de9e6fa61",
           "condition": "on_job_success",
-          "target_job_id": "4b25279a-20ac-4ed0-ac76-3c932f74092e"
+          "target_job_id": "f41f2e03-89a0-45fc-9a81-e3087b672afd"
         },
         "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful": {
-          "id": "9cbc1b6b-6db1-47ab-ada4-d2cb15af7074",
-          "source_job_id": "4b25279a-20ac-4ed0-ac76-3c932f74092e",
+          "id": "e5ba3a1b-f244-42ca-aea6-8a0b774a82d5",
+          "source_job_id": "f41f2e03-89a0-45fc-9a81-e3087b672afd",
           "condition": "on_job_success",
-          "target_job_id": "806402c8-9bb5-4de0-88de-fa79faac0417"
+          "target_job_id": "1fbdff3d-e916-47e9-9901-a9905479126e"
         },
         "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed": {
-          "id": "6f806dbc-602c-4a6d-b457-1c80b34203dd",
-          "source_job_id": "4b25279a-20ac-4ed0-ac76-3c932f74092e",
+          "id": "5fe1d490-f9d7-40b8-abef-4b20b9846fa1",
+          "source_job_id": "f41f2e03-89a0-45fc-9a81-e3087b672afd",
           "condition": "on_job_failure",
-          "target_job_id": "e9498f11-0ce0-464f-9c06-84099eb105a6"
+          "target_job_id": "e9ea55db-ce19-4259-8a95-2c8516bf513d"
         }
       }
     }
