@@ -21,7 +21,6 @@ workflows:
         # globals:
         body: |
           fn(state => state);
-          
       Notify-CHW-upload-successful:
         name: Notify CHW upload successful
         adaptor: '@openfn/language-http@latest'
