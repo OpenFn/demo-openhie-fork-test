@@ -11,7 +11,7 @@
       "id": "ac95ad7e-e05b-419b-b3e2-cacf21e2eebb",
       "name": "OpenHIE Workflow",
       "inserted_at": "2023-12-22T00:01:05",
-      "updated_at": "2023-12-22T00:01:05",
+      "updated_at": "2023-12-22T09:43:10",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "triggers": {
@@ -27,9 +27,9 @@
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
         },
-        "Send-to-OpenHIM-to-route-to-SHR": {
+        "Send-to-OpenHIM-to-route-SHR": {
           "id": "080e20a3-7406-4424-9753-c974a3c847d7",
-          "name": "Send to OpenHIM to route to SHR",
+          "name": "Send to OpenHIM to route SHR",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
         },
@@ -53,19 +53,19 @@
           "source_trigger_id": "cae544ab-03dc-4ccc-a09c-fb4edb255d7a",
           "target_job_id": "05c2b0a3-5e6c-404c-9ce1-cbab27da8319"
         },
-        "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR": {
+        "Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-SHR": {
           "id": "58eed6ed-2896-4692-8cbb-09a3727b9bd9",
           "source_job_id": "05c2b0a3-5e6c-404c-9ce1-cbab27da8319",
           "condition_type": "on_job_success",
           "target_job_id": "080e20a3-7406-4424-9753-c974a3c847d7"
         },
-        "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful": {
+        "Send-to-OpenHIM-to-route-SHR->Notify-CHW-upload-successful": {
           "id": "672ed0ee-dfe3-41ec-8ac5-b04446b596ed",
           "source_job_id": "080e20a3-7406-4424-9753-c974a3c847d7",
           "condition_type": "on_job_success",
           "target_job_id": "55df0e12-9ce1-4bb5-a842-b3a1cffafa14"
         },
-        "Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed": {
+        "Send-to-OpenHIM-to-route-SHR->Notify-CHW-upload-failed": {
           "id": "3457a327-734d-4ce0-b2b7-e8a61ddc82a8",
           "source_job_id": "080e20a3-7406-4424-9753-c974a3c847d7",
           "condition_type": "on_job_failure",
