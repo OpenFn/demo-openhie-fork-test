@@ -14,8 +14,8 @@ workflows:
         body: |
           fn(state => state);
           
-      Send-to-OpenHIM-to-route-to-SHR:
-        name: Send to OpenHIM to route to SHR
+      Send-to-OpenHIM-to-route-SHR:
+        name: Send to OpenHIM to route SHR
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
@@ -46,20 +46,20 @@ workflows:
       webhook->Transform-data-to-FHIR-standard:
         source_trigger: webhook
         target_job: Transform-data-to-FHIR-standard
-        condition: always
+        condition_type: always
         enabled: true
-      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR:
+      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-SHR:
         source_job: Transform-data-to-FHIR-standard
-        target_job: Send-to-OpenHIM-to-route-to-SHR
-        condition: on_job_success
+        target_job: Send-to-OpenHIM-to-route-SHR
+        condition_type: on_job_success
         enabled: true
-      Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful:
-        source_job: Send-to-OpenHIM-to-route-to-SHR
+      Send-to-OpenHIM-to-route-SHR->Notify-CHW-upload-successful:
+        source_job: Send-to-OpenHIM-to-route-SHR
         target_job: Notify-CHW-upload-successful
-        condition: on_job_success
+        condition_type: on_job_success
         enabled: true
-      Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed:
-        source_job: Send-to-OpenHIM-to-route-to-SHR
+      Send-to-OpenHIM-to-route-SHR->Notify-CHW-upload-failed:
+        source_job: Send-to-OpenHIM-to-route-SHR
         target_job: Notify-CHW-upload-failed
-        condition: on_job_failure
+        condition_type: on_job_failure
         enabled: true
