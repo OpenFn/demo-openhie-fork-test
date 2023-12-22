@@ -14,8 +14,8 @@ workflows:
         body: |
           fn(state => state);
           
-      Send-to-OpenHIM-to-route-SHR:
-        name: Send to OpenHIM to route SHR
+      Send-to-OpenHIM-to-route-to-SHR:
+        name: Send to OpenHIM to route to SHR
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
@@ -38,14 +38,6 @@ workflows:
         body: |
           fn(state => state);
           
-      dummy:
-        name: dummy
-        adaptor: '@openfn/language-common@latest'
-        # credential:
-        # globals:
-        body: |
-          // Get started by adding operations from the API reference
-          
     triggers:
       webhook:
         type: webhook
@@ -54,25 +46,20 @@ workflows:
       webhook->Transform-data-to-FHIR-standard:
         source_trigger: webhook
         target_job: Transform-data-to-FHIR-standard
-        condition_type: always
+        condition: always
         enabled: true
-      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-SHR:
+      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR:
         source_job: Transform-data-to-FHIR-standard
-        target_job: Send-to-OpenHIM-to-route-SHR
-        condition_type: on_job_success
+        target_job: Send-to-OpenHIM-to-route-to-SHR
+        condition: on_job_success
         enabled: true
-      Send-to-OpenHIM-to-route-SHR->Notify-CHW-upload-successful:
-        source_job: Send-to-OpenHIM-to-route-SHR
+      Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful:
+        source_job: Send-to-OpenHIM-to-route-to-SHR
         target_job: Notify-CHW-upload-successful
-        condition_type: on_job_success
+        condition: on_job_success
         enabled: true
-      Send-to-OpenHIM-to-route-SHR->Notify-CHW-upload-failed:
-        source_job: Send-to-OpenHIM-to-route-SHR
+      Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed:
+        source_job: Send-to-OpenHIM-to-route-to-SHR
         target_job: Notify-CHW-upload-failed
-        condition_type: on_job_failure
-        enabled: true
-      Notify-CHW-upload-failed->dummy:
-        source_job: Notify-CHW-upload-failed
-        target_job: dummy
-        condition_type: on_job_success
+        condition: on_job_failure
         enabled: true
