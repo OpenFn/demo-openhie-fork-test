@@ -11,7 +11,7 @@
       "id": "ac95ad7e-e05b-419b-b3e2-cacf21e2eebb",
       "name": "OpenHIE Workflow",
       "inserted_at": "2023-12-22T00:01:05",
-      "updated_at": "2023-12-22T09:43:10",
+      "updated_at": "2023-12-22T09:45:39",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "triggers": {
@@ -44,6 +44,12 @@
           "name": "Notify CHW upload failed",
           "body": "fn(state => state);\n",
           "adaptor": "@openfn/language-http@latest"
+        },
+        "dummy": {
+          "id": "45abda27-4919-4581-a8d2-e385577fe1e0",
+          "name": "dummy",
+          "body": "// Get started by adding operations from the API reference\n",
+          "adaptor": "@openfn/language-common@latest"
         }
       },
       "edges": {
@@ -70,6 +76,12 @@
           "source_job_id": "080e20a3-7406-4424-9753-c974a3c847d7",
           "condition_type": "on_job_failure",
           "target_job_id": "3a908678-d331-4598-8972-5d15c7b54e5d"
+        },
+        "Notify-CHW-upload-failed->dummy": {
+          "id": "a949d3cf-c75f-4ea6-8285-8fc7f7ade261",
+          "source_job_id": "3a908678-d331-4598-8972-5d15c7b54e5d",
+          "condition_type": "on_job_success",
+          "target_job_id": "45abda27-4919-4581-a8d2-e385577fe1e0"
         }
       }
     }

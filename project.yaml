@@ -38,6 +38,14 @@ workflows:
         body: |
           fn(state => state);
           
+      dummy:
+        name: dummy
+        adaptor: '@openfn/language-common@latest'
+        # credential:
+        # globals:
+        body: |
+          // Get started by adding operations from the API reference
+          
     triggers:
       webhook:
         type: webhook
@@ -62,4 +70,9 @@ workflows:
         source_job: Send-to-OpenHIM-to-route-SHR
         target_job: Notify-CHW-upload-failed
         condition_type: on_job_failure
+        enabled: true
+      Notify-CHW-upload-failed->dummy:
+        source_job: Notify-CHW-upload-failed
+        target_job: dummy
+        condition_type: on_job_success
         enabled: true
