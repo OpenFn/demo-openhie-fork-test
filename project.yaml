@@ -7,12 +7,14 @@ workflows:
     name: OpenHIE Workflow
     jobs:
       Transform-data-to-FHIR-standard:
-        name: Transform data to FHIR standards
+        name: Transform data to FHIR standard
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
         body: |
-          fn(state => state);
+          fn(state => {
+            return state;
+          });
           
       Send-to-OpenHIM-to-route-to-SHR:
         name: Send to OpenHIM to route to SHR

@@ -11,7 +11,7 @@
       "id": "5a9fd85a-5d01-4241-a4cc-2a65a322ff3a",
       "name": "OpenHIE Workflow",
       "inserted_at": "2024-01-08T00:01:10",
-      "updated_at": "2024-01-08T12:27:40",
+      "updated_at": "2024-01-08T17:17:28",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "triggers": {
@@ -24,7 +24,7 @@
         "Transform-data-to-FHIR-standard": {
           "id": "30945a3f-3c64-4fbf-ba55-b09e2b036b7a",
           "name": "Transform data to FHIR standard",
-          "body": "fn(state => state);\n",
+          "body": "fn(state => {\n  return state;\n});\n",
           "adaptor": "@openfn/language-http@latest"
         },
         "Send-to-OpenHIM-to-route-to-SHR": {
