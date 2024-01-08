@@ -11,10 +11,7 @@ workflows:
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
-        body: |
-          fn(state => {
-            return state;
-          });
+        body: "file://./jobs/expression.js"
           
       Send-to-OpenHIM-to-route-to-SHR:
         name: Send to OpenHIM to route to SHR
