@@ -3,7 +3,7 @@
   "name": "openhie-project",
   "description": null,
   "inserted_at": "2024-01-11T00:01:08",
-  "updated_at": "2024-01-11T14:54:15",
+  "updated_at": "2024-01-11T15:00:38",
   "scheduled_deletion": null,
   "requires_mfa": false,
   "workflows": {
@@ -11,7 +11,7 @@
       "id": "b321757e-b475-4320-8d9f-3e9882eca467",
       "name": "OpenHIE Workflow",
       "inserted_at": "2024-01-11T00:01:09",
-      "updated_at": "2024-01-11T14:54:15",
+      "updated_at": "2024-01-11T15:00:38",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
       "edges": {
@@ -48,7 +48,7 @@
         "Transform-data-to-FHIR-standard": {
           "id": "24b2b4cc-7b01-44ac-8d66-305d5226ae9a",
           "name": "Transform data to FHIR standard",
-          "body": "file://.jobs/expression.js",
+          "body": "file://./jobs/expression.js",
           "adaptor": "@openfn/language-http@latest"
         },
         "Send-to-OpenHIM-to-route-to-aleksa": {
