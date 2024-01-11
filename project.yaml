@@ -11,9 +11,8 @@ workflows:
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
-        body: |
-          fn(state => state);
-          
+        body: 'file://.jobs/expression.js'
+
       Send-to-OpenHIM-to-route-to-aleksa:
         name: Send to OpenHIM to route to aleksa
         adaptor: '@openfn/language-http@latest'
@@ -21,7 +20,7 @@ workflows:
         # globals:
         body: |
           fn(state => state);
-          
+
       Notify-CHW-upload-successful:
         name: Notify CHW upload successful
         adaptor: '@openfn/language-http@latest'
@@ -29,7 +28,7 @@ workflows:
         # globals:
         body: |
           fn(state => state);
-          
+
       Notify-CHW-upload-failed:
         name: Notify CHW upload failed
         adaptor: '@openfn/language-http@latest'
@@ -37,7 +36,7 @@ workflows:
         # globals:
         body: |
           fn(state => state);
-          
+
     triggers:
       webhook:
         type: webhook
@@ -73,7 +72,7 @@ workflows:
         # globals:
         body: |
           // Get started by adding operations from the API reference
-          
+
     triggers:
       webhook:
         type: webhook
