@@ -11,7 +11,7 @@ workflows:
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
-        body: 'file://.jobs/expression.js'
+        body: 'file://./jobs/expression.js'
 
       Send-to-OpenHIM-to-route-to-aleksa:
         name: Send to OpenHIM to route to aleksa
