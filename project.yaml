@@ -15,7 +15,7 @@ workflows:
           fn(state => state);
           
       Send-to-OpenHIM-to-route-to-Mtuchi:
-        name: Send to OpenHIM to route to Mtuchi
+        name: Send to OpenHIM to route to Aicha
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
