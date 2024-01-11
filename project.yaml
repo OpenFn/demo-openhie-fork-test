@@ -14,7 +14,7 @@ workflows:
         body: |
           fn(state => state);
           
-      Send-to-OpenHIM-to-route-to-SHR:
+      Send-to-OpenHIM-to-route-to-Mtuchi:
         name: Send to OpenHIM to route to Mtuchi
         adaptor: '@openfn/language-http@latest'
         # credential:
@@ -48,18 +48,18 @@ workflows:
         target_job: Transform-data-to-FHIR-standard
         condition_type: always
         enabled: true
-      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR:
+      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-Mtuchi:
         source_job: Transform-data-to-FHIR-standard
-        target_job: Send-to-OpenHIM-to-route-to-SHR
+        target_job: Send-to-OpenHIM-to-route-to-Mtuchi
         condition_type: on_job_success
         enabled: true
-      Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-successful:
-        source_job: Send-to-OpenHIM-to-route-to-SHR
+      Send-to-OpenHIM-to-route-to-Mtuchi->Notify-CHW-upload-successful:
+        source_job: Send-to-OpenHIM-to-route-to-Mtuchi
         target_job: Notify-CHW-upload-successful
         condition_type: on_job_success
         enabled: true
-      Send-to-OpenHIM-to-route-to-SHR->Notify-CHW-upload-failed:
-        source_job: Send-to-OpenHIM-to-route-to-SHR
+      Send-to-OpenHIM-to-route-to-Mtuchi->Notify-CHW-upload-failed:
+        source_job: Send-to-OpenHIM-to-route-to-Mtuchi
         target_job: Notify-CHW-upload-failed
         condition_type: on_job_failure
         enabled: true
