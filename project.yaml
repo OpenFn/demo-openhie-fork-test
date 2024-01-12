@@ -48,7 +48,9 @@ workflows:
       webhook->Transform-data-to-FHIR-standard:
         source_trigger: webhook
         target_job: Transform-data-to-FHIR-standard
-        condition_type: always
+        condition_type: js_expression
+        condition_label: always
+        condition_expression: true
         enabled: true
       Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR:
         source_job: Transform-data-to-FHIR-standard
