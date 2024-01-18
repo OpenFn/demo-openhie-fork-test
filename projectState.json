@@ -3,7 +3,7 @@
   "name": "openhie-project",
   "description": null,
   "inserted_at": "2024-01-18T00:01:12",
-  "updated_at": "2024-01-18T00:01:12",
+  "updated_at": "2024-01-18T00:21:52",
   "scheduled_deletion": null,
   "requires_mfa": false,
   "workflows": {
@@ -11,42 +11,9 @@
       "id": "776b5494-82ef-4c60-8841-5a91bf2d9fea",
       "name": "OpenHIE Workflow",
       "inserted_at": "2024-01-18T00:01:12",
-      "updated_at": "2024-01-18T00:17:10",
+      "updated_at": "2024-01-18T00:21:52",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
-      "triggers": {
-        "webhook": {
-          "enabled": true,
-          "id": "cae544ab-03dc-4ccc-a09c-fb4edb255d7a",
-          "type": "webhook"
-        }
-      },
-      "jobs": {
-        "Transform-data-to-FHIR-standard-aicha-test": {
-          "id": "a8a9be4c-16bf-4b42-aa91-cd401fb30064",
-          "name": "Transform data to FHIR standard aicha test",
-          "body": "fn(state => state);\n",
-          "adaptor": "@openfn/language-http@latest"
-        },
-        "Send-to-OpenHIM-to-route-to-SHR": {
-          "id": "2906f127-4a3b-4e67-b6fb-d4468eae4da6",
-          "name": "Send to OpenHIM to route to SHR",
-          "body": "fn(state => state);\n",
-          "adaptor": "@openfn/language-http@latest"
-        },
-        "Notify-CHW-upload-successful": {
-          "id": "3d5c529d-5332-4d94-98e8-c44431f25145",
-          "name": "Notify CHW upload successful",
-          "body": "fn(state => state);\n",
-          "adaptor": "@openfn/language-http@latest"
-        },
-        "Notify-CHW-upload-failed": {
-          "id": "468d3d10-a7e9-4ef1-a497-29a0f384a189",
-          "name": "Notify CHW upload failed",
-          "body": "fn(state => state);\n",
-          "adaptor": "@openfn/language-http@latest"
-        }
-      },
       "edges": {
         "webhook->Transform-data-to-FHIR-standard-aicha-test": {
           "enabled": true,
@@ -75,6 +42,39 @@
           "source_job_id": "2906f127-4a3b-4e67-b6fb-d4468eae4da6",
           "condition_type": "on_job_failure",
           "target_job_id": "468d3d10-a7e9-4ef1-a497-29a0f384a189"
+        }
+      },
+      "jobs": {
+        "Transform-data-to-FHIR-standard-aicha-test": {
+          "id": "a8a9be4c-16bf-4b42-aa91-cd401fb30064",
+          "name": "Transform data to FHIR standard",
+          "body": "fn(state => state);\n",
+          "adaptor": "@openfn/language-http@latest"
+        },
+        "Send-to-OpenHIM-to-route-to-SHR": {
+          "id": "2906f127-4a3b-4e67-b6fb-d4468eae4da6",
+          "name": "Send to OpenHIM to route to SHR",
+          "body": "fn(state => state);\n",
+          "adaptor": "@openfn/language-http@latest"
+        },
+        "Notify-CHW-upload-successful": {
+          "id": "3d5c529d-5332-4d94-98e8-c44431f25145",
+          "name": "Notify CHW upload successful",
+          "body": "fn(state => state);\n",
+          "adaptor": "@openfn/language-http@latest"
+        },
+        "Notify-CHW-upload-failed": {
+          "id": "468d3d10-a7e9-4ef1-a497-29a0f384a189",
+          "name": "Notify CHW upload failed",
+          "body": "fn(state => state);\n",
+          "adaptor": "@openfn/language-http@latest"
+        }
+      },
+      "triggers": {
+        "webhook": {
+          "enabled": true,
+          "id": "cae544ab-03dc-4ccc-a09c-fb4edb255d7a",
+          "type": "webhook"
         }
       }
     }
