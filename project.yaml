@@ -6,16 +6,14 @@ workflows:
   OpenHIE-Workflow:
     name: OpenHIE Workflow
     jobs:
-      Transform-data-to-FHIR-standard:
-        name: Transform data to FHIR standard Aicha
+      Transform-data-to-FHIR-standard-aicha-test:
+        name: Transform data to FHIR standard aicha test
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
         body: |
-          fn(state => {
-            return state
-          });
-          get('https://jsonplaceholder.typicode.com/todos/1');
+          fn(state => state);
+          
       Send-to-OpenHIM-to-route-to-SHR:
         name: Send to OpenHIM to route to SHR
         adaptor: '@openfn/language-http@latest'
@@ -25,7 +23,7 @@ workflows:
           fn(state => state);
           
       Notify-CHW-upload-successful:
-        name: Notify CHW after upload
+        name: Notify CHW upload successful
         adaptor: '@openfn/language-http@latest'
         # credential:
         # globals:
@@ -45,15 +43,13 @@ workflows:
         type: webhook
         enabled: true
     edges:
-      webhook->Transform-data-to-FHIR-standard:
+      webhook->Transform-data-to-FHIR-standard-aicha-test:
         source_trigger: webhook
-        target_job: Transform-data-to-FHIR-standard
-        condition_type: js_expression
-        condition_label: always
-        condition_expression: true
+        target_job: Transform-data-to-FHIR-standard-aicha-test
+        condition_type: always
         enabled: true
-      Transform-data-to-FHIR-standard->Send-to-OpenHIM-to-route-to-SHR:
-        source_job: Transform-data-to-FHIR-standard
+      Transform-data-to-FHIR-standard-aicha-test->Send-to-OpenHIM-to-route-to-SHR:
+        source_job: Transform-data-to-FHIR-standard-aicha-test
         target_job: Send-to-OpenHIM-to-route-to-SHR
         condition_type: on_job_success
         enabled: true
