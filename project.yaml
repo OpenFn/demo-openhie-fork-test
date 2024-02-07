@@ -12,7 +12,7 @@ workflows:
         # credential:
         # globals:
         body: |
-          fn(state => state);
+          fn(state => state); //test
           
       Send-to-OpenHIM-to-route-to-SHR:
         name: Send to OpenHIM to route to SHR
