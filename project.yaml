@@ -14,6 +14,7 @@ workflows:
         body: |
           fn(state => state); //test
           
+          //more tests
       Send-to-OpenHIM-to-route-to-SHR:
         name: Send to OpenHIM to route to SHR
         adaptor: '@openfn/language-http@latest'

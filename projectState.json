@@ -12,9 +12,42 @@
       "id": "8b94f660-6608-420c-a689-c406584dc237",
       "name": "OpenHIE Workflow",
       "inserted_at": "2024-02-07T00:01:10",
-      "updated_at": "2024-02-07T11:39:24",
+      "updated_at": "2024-02-07T11:42:08",
       "project_id": "4adf2644-ed4e-4f97-a24c-ab35b3cb1efa",
       "deleted_at": null,
+      "triggers": {
+        "webhook": {
+          "enabled": true,
+          "id": "cae544ab-03dc-4ccc-a09c-fb4edb255d7a",
+          "type": "webhook"
+        }
+      },
+      "jobs": {
+        "Transform-data-to-FHIR-standard": {
+          "id": "168b43f0-624a-4842-b8a0-359e80aa6a83",
+          "name": "Transform data to FHIR standard",
+          "body": "fn(state => state); //test\n\n//more tests",
+          "adaptor": "@openfn/language-http@latest"
+        },
+        "Send-to-OpenHIM-to-route-to-SHR": {
+          "id": "66345ae3-436a-42e1-baef-3ebbe7fd8425",
+          "name": "Send to OpenHIM to route to SHR",
+          "body": "fn(state => state);\n",
+          "adaptor": "@openfn/language-http@latest"
+        },
+        "Notify-CHW-upload-successful": {
+          "id": "dde198b1-e90f-429d-93cd-16d6a465daeb",
+          "name": "Notify CHW upload successful",
+          "body": "fn(state => state);\n",
+          "adaptor": "@openfn/language-http@latest"
+        },
+        "Notify-CHW-upload-failed": {
+          "id": "3ff8e41e-6ebf-492b-9794-a4a71dc3536b",
+          "name": "Notify CHW upload failed",
+          "body": "fn(state => state);\n",
+          "adaptor": "@openfn/language-http@latest"
+        }
+      },
       "edges": {
         "webhook->Transform-data-to-FHIR-standard": {
           "enabled": true,
@@ -43,39 +76,6 @@
           "source_job_id": "66345ae3-436a-42e1-baef-3ebbe7fd8425",
           "condition_type": "on_job_failure",
           "target_job_id": "3ff8e41e-6ebf-492b-9794-a4a71dc3536b"
-        }
-      },
-      "jobs": {
-        "Transform-data-to-FHIR-standard": {
-          "id": "168b43f0-624a-4842-b8a0-359e80aa6a83",
-          "name": "Transform data to FHIR standard",
-          "body": "fn(state => state); //test\n",
-          "adaptor": "@openfn/language-http@latest"
-        },
-        "Send-to-OpenHIM-to-route-to-SHR": {
-          "id": "66345ae3-436a-42e1-baef-3ebbe7fd8425",
-          "name": "Send to OpenHIM to route to SHR",
-          "body": "fn(state => state);\n",
-          "adaptor": "@openfn/language-http@latest"
-        },
-        "Notify-CHW-upload-successful": {
-          "id": "dde198b1-e90f-429d-93cd-16d6a465daeb",
-          "name": "Notify CHW upload successful",
-          "body": "fn(state => state);\n",
-          "adaptor": "@openfn/language-http@latest"
-        },
-        "Notify-CHW-upload-failed": {
-          "id": "3ff8e41e-6ebf-492b-9794-a4a71dc3536b",
-          "name": "Notify CHW upload failed",
-          "body": "fn(state => state);\n",
-          "adaptor": "@openfn/language-http@latest"
-        }
-      },
-      "triggers": {
-        "webhook": {
-          "enabled": true,
-          "id": "cae544ab-03dc-4ccc-a09c-fb4edb255d7a",
-          "type": "webhook"
         }
       }
     }
