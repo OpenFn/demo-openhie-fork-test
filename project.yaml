@@ -12,9 +12,8 @@ workflows:
         # credential:
         # globals:
         body: |
-          fn(state => state); //test
+          fn(state => state);
           
-          //more tests
       Send-to-OpenHIM-to-route-to-SHR:
         name: Send to OpenHIM to route to SHR
         adaptor: '@openfn/language-http@latest'
