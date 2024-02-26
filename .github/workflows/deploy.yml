@@ -6,7 +6,7 @@ on:
 jobs:
   deploy-to-lightning:
     runs-on: ubuntu-latest
-    name: A job to deploy to Lightning
+    name: A job to deploy to Lightning v2
     steps:
       - name: openfn deploy
         uses: OpenFn/cli-deploy-action@v0.1.11
